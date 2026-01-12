@@ -1,0 +1,33 @@
+---
+import LocalidadCard from "./LocalidadCard.astro";
+
+
+export interface Props {
+    localidades: Array<{ name: string; url: string; subtitle?: string }>;
+}
+
+const { localidades } = Astro.props;
+
+// Orden alfabético
+const sorted = localidades.sort((a, b) => a.name.localeCompare(b.name));
+---
+
+<section class="py-20 px-4 bg-white">
+    <div class="max-w-6xl mx-auto text-center mb-14">
+        <h2 class="text-3xl md:text-5xl font-bold text-gray-900">
+            Fibra en tu zona
+        </h2>
+        <p class="mt-4 text-gray-600 text-lg">
+            Consulta disponibilidad en las principales localidades.
+        </p>
+    </div>
+
+    <!-- GRID DE CARDS -->
+    <div
+        class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 max-w-6xl mx-auto localidades-grid"
+    >
+        {sorted.map((loc) => <LocalidadCard {...loc} />)}
+    </div>
+</section>
+
+

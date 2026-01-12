@@ -1,0 +1,105 @@
+---
+import Layout from "../layouts/Layout.astro";
+import config from "../data/site-config.json";
+import { generateSchema } from "../lib/schemaGenerator.js";
+
+/* Schema legal */
+const schema = generateSchema(
+    {
+        type: "WebPage",
+        data: {
+            name: "Política de Cookies",
+            description:
+                "Información sobre el uso de cookies técnicas en la web de " +
+                config.companyName,
+        },
+    },
+    config,
+    Astro.url,
+);
+---
+
+<Layout
+    title={`Política de Cookies | ${config.companyName}`}
+    description={`Información sobre el uso de cookies técnicas en ${config.companyName}.`}
+    schema={schema}
+>
+    <main class="pt-28 pb-24">
+        <!-- HERO LEGAL -->
+        <section class="container mx-auto px-6 text-center mb-16">
+            <h1 class="text-4xl font-heading font-bold text-primary-600">
+                Política de Cookies
+            </h1>
+            <p class="mt-4 text-accent-600 text-lg max-w-3xl mx-auto">
+                Información clara y transparente sobre el uso de cookies en
+                nuestra web.
+            </p>
+        </section>
+
+        <!-- CONTENIDO -->
+        <section
+            class="container mx-auto px-6 max-w-3xl space-y-10 text-gray-700 leading-relaxed"
+        >
+            <div>
+                <h2 class="text-2xl font-semibold text-accent-800 mb-3">
+                    ¿Qué son las cookies?
+                </h2>
+                <p>
+                    Las cookies son pequeños archivos que se almacenan en tu
+                    dispositivo cuando visitas una página web. Su función
+                    principal es garantizar el correcto funcionamiento del sitio
+                    y mejorar la experiencia del usuario.
+                </p>
+            </div>
+
+            <div>
+                <h2 class="text-2xl font-semibold text-accent-800 mb-3">
+                    ¿Qué tipo de cookies utilizamos?
+                </h2>
+                <p>
+                    En <strong>{config.companyName}</strong> únicamente utilizamos
+                    <strong> cookies técnicas</strong>, necesarias para el
+                    funcionamiento básico de la web.
+                </p>
+
+                <ul class="list-disc list-inside mt-4 space-y-2">
+                    <li>Recordar si has aceptado el aviso de cookies.</li>
+                    <li>Garantizar la correcta navegación entre páginas.</li>
+                </ul>
+            </div>
+
+            <div>
+                <h2 class="text-2xl font-semibold text-accent-800 mb-3">
+                    Cookies de terceros
+                </h2>
+                <p>
+                    Esta web <strong>no utiliza cookies de terceros</strong>, ni
+                    cookies de seguimiento, analítica avanzada o publicidad.
+                </p>
+            </div>
+
+            <div>
+                <h2 class="text-2xl font-semibold text-accent-800 mb-3">
+                    ¿Cómo puedes gestionar las cookies?
+                </h2>
+                <p>
+                    Puedes eliminar o bloquear las cookies desde la
+                    configuración de tu navegador. Ten en cuenta que, al
+                    tratarse de cookies técnicas, su desactivación podría
+                    afectar al correcto funcionamiento de la web.
+                </p>
+            </div>
+
+            <div>
+                <h2 class="text-2xl font-semibold text-accent-800 mb-3">
+                    Responsable
+                </h2>
+                <p>
+                    <strong>{config.companyName}</strong><br />
+                    Dirección: {config.address}<br />
+                    Email: {config.email}
+                </p>
+            </div>
+        </section>
+    </main>
+</Layout>

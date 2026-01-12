@@ -1,0 +1,6 @@
+# Permitir el rastreo a todos los bots
+User-agent: *
+Allow: /
+
+# Ubicación del sitemap
+Sitemap: https://www.ejemplo.com/sitemap-index.xml

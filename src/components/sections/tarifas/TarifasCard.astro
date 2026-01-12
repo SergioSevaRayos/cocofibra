@@ -1,0 +1,85 @@
+---
+import CTA from "../../ui/CTA.astro";
+
+export interface Props {
+  title: string;
+  description: string;
+  price: string;
+  slug: string;
+  features?: string[];
+  category?: string;
+  badge?: string;
+}
+
+/* =========================================
+   DESTRUCTURING CORRECTO Y COMPLETO
+========================================= */
+const {
+  title,
+  description,
+  price,
+  slug,
+  features = [],
+  category = "fibra-movil",
+  badge,
+} = Astro.props;
+
+/* URL DINÁMICA A PARTIR DEL SLUG */
+const url = `/tarifas/${slug}`;
+---
+
+<article
+  class="tarifa-item relative bg-white rounded-2xl border border-gray-200 shadow-md p-8 flex flex-col
+         transition-all duration-300 hover:shadow-2xl hover:-translate-y-2 hover:border-primary-500/60 tarifa-fade"
+  data-category={category}
+  role="article"
+  aria-label={`Tarifa ${title}`}
+  data-url={url}
+>
+  <!-- BADGE (OPCIONAL) -->
+  {
+    badge && (
+      <div class="absolute -top-3 left-4 bg-primary-500 text-white text-xs font-semibold px-3 py-1 rounded-full shadow-md">
+        {badge}
+      </div>
+    )
+  }
+
+  <!-- TÍTULO -->
+  <h3 class="text-2xl font-bold text-gray-900 mb-2">{title}</h3>
+
+  <!-- DESCRIPCIÓN -->
+  <p class="text-gray-600 text-sm mb-6 leading-relaxed">{description}</p>
+
+  <!-- FEATURES -->
+  {
+    features.length > 0 && (
+      <ul class="space-y-3 mb-6">
+        {features.map((f) => (
+          <li class="flex items-center text-gray-700 text-sm">
+            <span class="inline-block w-2 h-2 bg-primary-500 rounded-full mr-3" />
+            <span>{f}</span>
+          </li>
+        ))}
+      </ul>
+    )
+  }
+
+  <!-- SEPARADOR -->
+  <div class="h-px bg-gray-200 my-4"></div>
+
+  <!-- PRECIO -->
+  <div class="text-center mb-6">
+    <span class="text-4xl font-extrabold text-primary-600">{price}</span>
+    <span class="text-gray-500 text-sm block mt-1">/mes</span>
+  </div>
+
+  <!-- CTA -->
+  <CTA
+    href={url}
+    label="Contratar ahora"
+    variant="primary"
+    size="md"
+    class="mt-auto w-full"
+  />
+</article>

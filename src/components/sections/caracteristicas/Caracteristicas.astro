@@ -1,0 +1,49 @@
+---
+import CaracteristicaItem from "./CaracteristicaItem.astro";
+
+
+const features = [
+    {
+        icon: "/icons/velocidad.webp",
+        title: "Instalación rápida",
+        text: "Activa tu fibra en menos de 48 horas en la mayoría de zonas.",
+    },
+    {
+        icon: "/icons/fibra.webp",
+        title: "Fibra simétrica real",
+        text: "Subida y bajada a la misma velocidad. Ideal para teletrabajo.",
+    },
+    {
+        icon: "/icons/soporte.webp",
+        title: "Atención cercana y humana",
+        text: "Sin robots. Resolvemos tus dudas de manera directa.",
+    },
+    {
+        icon: "/icons/precio.webp",
+        title: "Precios sin sorpresas",
+        text: "Tarifas claras, sin subidas inesperadas ni letra pequeña.",
+    },
+];
+---
+
+<section class="py-20 bg-white px-4">
+    <div class="max-w-5xl mx-auto text-center mb-14">
+        <h2 class="text-3xl md:text-5xl font-bold text-gray-900 features-title">
+            ¿Por qué elegir <span class="text-primary-500">CocoFibra</span>?
+        </h2>
+        <p class="mt-4 text-gray-600 text-lg features-subtitle">
+            Velocidad, estabilidad y atención humana. Así de simple.
+        </p>
+    </div>
+
+    <div
+        class="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-4xl mx-auto features-grid"
+    >
+        {features.map((f) => <CaracteristicaItem {...f} />)}
+    </div>
+</section>
+
+
+
+
+

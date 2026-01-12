@@ -1,0 +1,13 @@
+{
+    "companyName": "CocoFibra",
+    "businessType": "Fibra y Móvil",
+    "logoUrl": "/images/logo.png",
+    "phone": "900 000 000",
+    "email": "hola@cocofibra.com",
+    "address": "C/ Ejemplo, 1, Madrid",
+    "social": { "linkedin": "", "instagram": "" },
+    "siteLanguage": "es",
+    "openingHours": "Lun-Dom 5:00-23:00",
+    "defaultDescription": "Fibra simétrica y móvil con atención local y tarifas sin sorpresas.",
+    "ogImage": "/images/og-default.png"
+}

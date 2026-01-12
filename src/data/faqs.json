@@ -1,0 +1,134 @@
+{
+    "home": [
+        {
+            "q": "¿Qué ventajas ofrece CocoFibra frente a otras operadoras?",
+            "a": "Somos un operador local con instalación rápida, atención humana y precios sin sorpresas. Además, todas nuestras tarifas incluyen router WiFi 6 en la mayoría de instalaciones."
+        },
+        {
+            "q": "¿Cuánto tarda la instalación de fibra?",
+            "a": "Normalmente instalamos en menos de 48 horas. Un técnico local acude a tu domicilio para dejarlo todo funcionando."
+        },
+        {
+            "q": "¿Existe permanencia?",
+            "a": "No. Nuestras tarifas no tienen permanencia salvo promociones puntuales claramente indicadas."
+        }
+    ],
+    "tarifas": [
+        {
+            "q": "¿Incluyen todas las tarifas router WiFi 6?",
+            "a": "Sí, la mayoría de tarifas incluyen router WiFi 6 de alta calidad sin coste adicional."
+        },
+        {
+            "q": "¿Los gigas móviles son acumulables?",
+            "a": "Sí, en la mayoría de tarifas los gigas móviles son acumulables. Puedes consultarlo dentro de cada tarifa específica."
+        },
+        {
+            "q": "¿Puedo combinar fibra y móvil?",
+            "a": "Sí, ofrecemos tarifas combinadas con precios más competitivos y ventajas adicionales."
+        },
+        {
+            "q": "¿Cómo se realiza la portabilidad móvil?",
+            "a": "Nos encargamos de todo. El cambio suele completarse en 24–48h manteniendo tu número actual."
+        }
+    ],
+    "localidades": [
+        {
+            "q": "¿Dónde ofrece servicio CocoFibra?",
+            "a": "Trabajamos en diferentes municipios y zonas con fibra óptica real. Puedes consultar la cobertura exacta seleccionando tu localidad dentro del mapa."
+        },
+        {
+            "q": "¿La disponibilidad de fibra depende de mi calle?",
+            "a": "Sí, la disponibilidad puede variar por zona. Te confirmamos la cobertura exacta en pocas horas desde la solicitud."
+        },
+        {
+            "q": "¿Qué velocidad real puedo esperar?",
+            "a": "Ofrecemos fibra simétrica con velocidad estable y baja latencia. Los resultados pueden variar ligeramente según el router y la cobertura WiFi interna."
+        }
+    ],
+    "localidad": [
+        {
+            "q": "¿Hay fibra disponible en mi barrio?",
+            "a": "La cobertura depende de la calle exacta. En esta página puedes comprobar si tu dirección tiene disponibilidad inmediata."
+        },
+        {
+            "q": "¿Cuánto tarda la instalación en esta zona?",
+            "a": "En la mayoría de localidades instalamos en menos de 48 horas gracias a nuestros equipos técnicos locales."
+        },
+        {
+            "q": "¿Las tarifas son las mismas en todas las localidades?",
+            "a": "Sí, pero puede haber promociones exclusivas según la zona. Consulta las tarifas disponibles en tu localidad."
+        }
+    ],
+    "contacto": [
+        {
+            "q": "¿Cuál es el horario de atención al cliente?",
+            "a": "Nuestro equipo te atiende de forma local de lunes a viernes en horario comercial."
+        },
+        {
+            "q": "¿Puedo contactar por teléfono o email?",
+            "a": "Sí. Disponemos de teléfono directo y email de soporte para ayudarte en cualquier consulta."
+        },
+        {
+            "q": "¿Ofrecéis soporte técnico en domicilio?",
+            "a": "Sí, nuestros técnicos acuden a tu hogar cuando es necesario para resolver cualquier incidencia."
+        }
+    ],
+    "preguntas": [
+        {
+            "q": "¿Cómo funciona la portabilidad?",
+            "a": "Nos encargamos de todo el proceso para que mantengas tu número sin interrupciones."
+        },
+        {
+            "q": "¿Qué documentación necesito para contratar?",
+            "a": "Solo necesitas tu DNI y un método de pago válido. La contratación completa lleva menos de 2 minutos."
+        },
+        {
+            "q": "¿Puedo mejorar mi tarifa sin coste?",
+            "a": "Sí. Puedes solicitar un cambio de tarifa siempre que lo desees."
+        }
+    ],
+    "tarifa": {
+        "fibra-movil": [
+            {
+                "q": "¿La fibra y la línea móvil se contratan juntas?",
+                "a": "Sí, la contratación es unificada y recibirás una sola factura mensual."
+            },
+            {
+                "q": "¿Puedo añadir más líneas móviles?",
+                "a": "Sí, puedes añadir líneas adicionales con precios especiales."
+            },
+            {
+                "q": "¿La velocidad de fibra es simétrica?",
+                "a": "Sí, todas nuestras tarifas de fibra incluyen velocidad simétrica garantizada."
+            }
+        ],
+        "fibra": [
+            {
+                "q": "¿La instalación de fibra tiene coste?",
+                "a": "No. La instalación estándar es gratuita."
+            },
+            {
+                "q": "¿Puedo contratar solo fibra sin móvil?",
+                "a": "Sí, disponemos de tarifas exclusivas de fibra sin línea móvil asociada."
+            },
+            {
+                "q": "¿Qué velocidad real puedo esperar?",
+                "a": "Ofrecemos fibra óptica real con estabilidad y baja latencia."
+            }
+        ],
+        "movil": [
+            {
+                "q": "¿La tarifa incluye roaming?",
+                "a": "Sí, puedes usar tu tarifa en la Unión Europea sin coste adicional."
+            },
+            {
+                "q": "¿La portabilidad tarda mucho?",
+                "a": "Generalmente 24–48 horas sin perder tu número."
+            },
+            {
+                "q": "¿Hay límite de llamadas?",
+                "a": "No, las llamadas son ilimitadas según política de uso razonable."
+            }
+        ]
+    }
+}

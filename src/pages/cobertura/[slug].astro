@@ -1,0 +1,137 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import config from "../../data/site-config.json";
+import localidades from "../../data/localidades.json";
+import tarifas from "../../data/tarifas.json";
+
+import preguntasScript from "../../scripts/preguntas.js?url";
+import TarifasSection from "../../components/sections/tarifas/TarifasSection.astro";
+import PreguntasSection from "../../components/sections/preguntas/PreguntasSection.astro";
+import CTASection from "../../components/sections/CTASection.astro";
+import { generateSchema } from "../../lib/schemaGenerator.js";
+import faqs from "../../data/faqs.json";
+
+/* ===========================
+   STATIC PATHS
+=========================== */
+export async function getStaticPaths() {
+    return localidades.map((loc) => ({
+        params: { slug: loc.slug },
+        props: { localidad: loc },
+    }));
+}
+
+/* ===========================
+   PAGE PROPS
+=========================== */
+const { localidad } = Astro.props;
+
+/* SEO schema dinámico */
+const schema = generateSchema(
+    {
+        type: "WebPage",
+        data: {
+            name: `Cobertura en ${localidad.name}`,
+            description:
+                localidad.description ||
+                `Cobertura de fibra y móvil en ${localidad.name}.`,
+            areaServed: localidad.name,
+        },
+    },
+    config,
+    Astro.url,
+);
+
+/* Selección automática de tarifas mostradas */
+const tarifasDestacadas = tarifas.slice(0, 3);
+---
+
+<Layout
+    title={`Cobertura en ${localidad.name} | ${config.companyName}`}
+    description={localidad.description ||
+        `Cobertura de fibra y móvil en ${localidad.name}.`}
+    schema={schema}
+>
+    <main class="pt-28 pb-24">
+        <!-- HERO LOCAL -->
+        <section class="container mx-auto px-6 text-center mb-16">
+            <h1
+                class="text-4xl md:text-5xl font-heading font-bold text-primary-600"
+            >
+                Cobertura de fibra en {localidad.name}
+            </h1>
+
+            <p class="mt-4 text-accent-600 text-lg max-w-3xl mx-auto">
+                Consulta si tu zona de {localidad.name} tiene fibra simétrica disponible.
+                Instalación rápida, router WiFi 6 y atención local.
+            </p>
+
+            <a
+                href="/contacto"
+                class="inline-block bg-primary-500 text-white px-8 py-4 rounded-xl font-semibold mt-8 shadow-gym-card hover:bg-primary-600 transition"
+            >
+                Consultar cobertura en {localidad.name}
+            </a>
+        </section>
+
+        <!-- INFORMACIÓN LOCAL -->
+        <section class="container mx-auto px-6 mb-20 max-w-3xl">
+            <h2
+                class="text-2xl font-heading font-semibold text-primary-600 mb-4"
+            >
+                ¿Qué cobertura hay en {localidad.name}?
+            </h2>
+
+            <p class="text-gray-700 leading-relaxed text-base">
+                Ofrecemos cobertura de fibra óptica real en diferentes barrios y
+                zonas de {localidad.name}. Si no estás seguro de tu calle
+                exacta, podemos comprobarlo rápidamente.
+            </p>
+
+            <p class="mt-4 text-gray-700 leading-relaxed text-base">
+                Las tarifas disponibles en {localidad.name} incluyen velocidades
+                estables, WiFi 6 en la mayoría de instalaciones y atención local
+                sin intermediarios.
+            </p>
+        </section>
+
+        <!-- TARIFAS -->
+        <section class="container mx-auto px-6 mb-20">
+            <h2
+                class="text-2xl font-heading font-semibold text-primary-600 text-center mb-8"
+            >
+                Tarifas disponibles en {localidad.name}
+            </h2>
+
+            <TarifasSection tarifas={tarifasDestacadas} simple />
+
+            <div class="text-center mt-8">
+                <a
+                    href="/tarifas"
+                    class="text-primary-600 underline font-medium"
+                >
+                    Ver todas las tarifas →
+                </a>
+            </div>
+        </section>
+
+        <!-- FAQ -->
+        <section class="container mx-auto px-6 mb-20">
+            <h2
+                class="text-2xl font-heading font-semibold text-primary-600 text-center mb-8"
+            >
+                Preguntas frecuentes sobre la cobertura en {localidad.name}
+            </h2>
+
+            <PreguntasSection preguntas={faqs.localidad} />
+
+        </section>
+
+        <!-- CTA FINAL -->
+        <section class="text-center mt-20">
+            <CTASection />
+        </section>
+    </main>
+    <script type="module" src={preguntasScript}></script>
+
+</Layout>

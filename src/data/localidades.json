@@ -1,0 +1,20 @@
+[
+    {
+        "name": "Madrid",
+        "slug": "madrid",
+        "provincia": "Comunidad de Madrid",
+        "description": "Cobertura de fibra y móvil en Madrid."
+    },
+    {
+        "name": "Toledo",
+        "slug": "toledo",
+        "provincia": "Castilla-La Mancha",
+        "description": "Instalación rápida de fibra óptica en Toledo."
+    },
+    {
+        "name": "Bargas",
+        "slug": "bargas",
+        "provincia": "Toledo",
+        "description": "Cobertura de fibra estable en Bargas."
+    }
+]

@@ -1,0 +1,44 @@
+---
+import TarifasCard from "./TarifasCard.astro";
+
+export interface Props {
+  tarifas: any[];
+  simple?: boolean; // vista simple para index
+  title?: string; // opcional: personalizar título
+  subtitle?: string;
+}
+
+const {
+  tarifas = [],
+  simple = false,
+  title = "Tarifas disponibles",
+  subtitle = "Planes claros, velocidad real, precio honesto.",
+} = Astro.props;
+---
+
+<section
+  class={`w-full ${simple ? "" : "py-24 bg-secondary-50 px-4"}`}
+  aria-labelledby={simple ? undefined : "tarifas-heading"}
+>
+  <!-- TÍTULO SOLO EN MODO COMPLETO -->
+  {
+    !simple && (
+      <header class="max-w-5xl mx-auto text-center mb-16">
+        <h2
+          id="tarifas-heading"
+          class="text-3xl md:text-5xl font-bold text-gray-900"
+        >
+          {title}
+        </h2>
+        <p class="mt-4 text-gray-600 text-lg">{subtitle}</p>
+      </header>
+    )
+  }
+
+  <!-- GRID DE TARJETAS -->
+  <div
+    class="tarifas-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 max-w-6xl mx-auto tarifa-fade"
+  >
+    {tarifas.map((t, index) => <TarifasCard {...t} key={index} />)}
+  </div>
+</section>

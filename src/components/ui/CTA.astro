@@ -1,0 +1,63 @@
+---
+export interface Props {
+  href?: string;
+  label: string;
+  variant?: "primary" | "secondary" | "cta"; // ✅ Añadimos cta
+  size?: "sm" | "md" | "lg";
+  target?: string;
+  rel?: string;
+  class?: string;
+}
+
+const {
+  href = "#",
+  label,
+  variant = "primary",
+  size = "md",
+  target,
+  rel,
+  class: extraClass = "",
+} = Astro.props;
+
+const base =
+  "inline-block font-bold rounded-xl transition-all duration-200 text-center select-none";
+
+const sizes = {
+  sm: "px-4 py-2 text-sm",
+  md: "px-6 py-3 text-base",
+  lg: "px-8 py-4 text-lg",
+};
+
+const variants = {
+  primary: `
+    bg-cta-500 text-white
+    hover:bg-cta-600 active:bg-cta-700
+    shadow-md active:scale-95
+    focus:outline-none focus:ring-4 focus:ring-cta-500/40
+  `,
+
+  secondary: `
+    border-2 border-cta-500 text-cta-500
+    hover:bg-cta-500 hover:text-white
+    active:bg-cta-700 active:border-cta-700
+    focus:outline-none focus:ring-4 focus:ring-cta-500/30
+  `,
+
+  // ✅ NUEVA VARIANTE CTA (idéntica a primary, pero separada semánticamente)
+  cta: `
+    bg-cta-500 text-white
+    hover:bg-cta-600 active:bg-cta-700
+    shadow-md active:scale-95
+    focus:outline-none focus:ring-4 focus:ring-cta-500/40
+  `,
+};
+---
+
+<a
+  href={href}
+  target={target}
+  rel={rel}
+  class={`${base} ${sizes[size]} ${variants[variant]} ${extraClass}`}
+>
+  {label}
+</a>

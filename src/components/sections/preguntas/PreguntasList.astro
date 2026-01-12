@@ -1,0 +1,22 @@
+---
+export interface Props {
+    preguntas: { q: string; a: string }[];
+}
+
+const { preguntas = [] } = Astro.props;
+---
+
+<section class="space-y-6" id="faq-container">
+    {preguntas.map((item) => (
+        <div class="faq-item-pro rounded-2xl p-6 shadow-gym-card bg-white border border-gray-200">
+            <button class="faq-question-pro w-full text-left font-semibold text-accent-800 flex justify-between items-center" data-faq-button>
+                <span>{item.q}</span>
+                <span class="faq-icon-pro text-primary-600 text-xl">+</span>
+            </button>
+
+            <div class="faq-answer-pro hidden mt-3 text-gray-700 leading-relaxed">
+                {item.a}
+            </div>
+        </div>
+    ))}
+</section>

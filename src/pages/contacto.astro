@@ -1,0 +1,123 @@
+---
+import Layout from "../layouts/Layout.astro";
+import config from "../data/site-config.json";
+import { generateSchema } from "../lib/schemaGenerator.js";
+import PreguntasSection from "../components/sections/preguntas/PreguntasSection.astro";
+import faqs from "../data/faqs.json";
+import contactScript from "../scripts/contact.js?url";
+import preguntasScript from "../scripts/preguntas.js?url";
+
+/* Schema SEO */
+const schema = generateSchema({ type: "LocalBusiness" }, config, Astro.url);
+---
+
+<Layout
+  title={`Contacto | ${config.companyName}`}
+  description={`Información de contacto, teléfono, email, dirección y ubicación de ${config.companyName}.`}
+  schema={schema}
+>
+  <main class="pt-28 pb-24">
+    <!-- CABECERA -->
+    <section
+      class="container mx-auto px-6 text-center mb-16 tarifa-fade fade-in min-h-[160px]"
+    >
+      <h1 class="text-4xl font-heading font-bold text-primary-600">Tarifas</h1>
+      <p class="mt-3 text-accent-600 text-lg max-w-2xl mx-auto">
+        Elige la tarifa que mejor se adapte a ti. Precios claros, sin letra
+        pequeña.
+      </p>
+    </section>
+
+    <!-- TARJETAS DE CONTACTO (ANIMADAS) -->
+    <section class="container mx-auto px-6 grid md:grid-cols-3 gap-8 mb-20">
+      <!-- Teléfono -->
+      <div
+        class="bg-secondary-50 shadow-gym-card p-8 rounded-2xl text-center hover:shadow-gym-lg transition-shadow contact-fade fade-in"
+      >
+        <img
+          src="/icons/phone.webp"
+          alt="Teléfono"
+          class="w-10 h-10 mx-auto mb-4 opacity-90"
+        />
+        <p class="text-accent-700 font-medium mb-1">Teléfono</p>
+        <a
+          href={`tel:${config.phone.replace(/\\s+/g, "")}`}
+          class="text-xl text-primary-600 font-semibold hover:underline underline-offset-4"
+        >
+          {config.phone}
+        </a>
+      </div>
+
+      <!-- Email -->
+      <div
+        class="bg-secondary-50 shadow-gym-card p-8 rounded-2xl text-center hover:shadow-gym-lg transition-shadow contact-fade fade-in"
+      >
+        <img
+          src="/icons/email.webp"
+          alt="Email"
+          class="w-10 h-10 mx-auto mb-4 opacity-90"
+        />
+        <p class="text-accent-700 font-medium mb-1">Email</p>
+        <a
+          href={`mailto:${config.email}`}
+          class="text-xl text-primary-600 font-semibold hover:underline underline-offset-4 break-all"
+        >
+          {config.email}
+        </a>
+      </div>
+
+      <!-- Dirección -->
+      <div
+        class="bg-secondary-50 shadow-gym-card p-8 rounded-2xl text-center hover:shadow-gym-lg transition-shadow contact-fade fade-in"
+      >
+        <img
+          src="/icons/address.webp"
+          alt="Dirección"
+          class="w-10 h-10 mx-auto mb-4 opacity-90"
+        />
+        <p class="text-accent-700 font-medium mb-1">Dirección</p>
+        <a
+          href={`https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(config.address)}`}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="text-xl text-primary-600 font-semibold hover:underline underline-offset-4 block contact-address"
+        >
+          {config.address}
+        </a>
+      </div>
+    </section>
+
+    <!-- DATOS DE EMPRESA -->
+    <section
+      class="container mx-auto px-6 max-w-xl mb-20 text-center contact-fade fade-in"
+    >
+      <h2 class="text-2xl font-heading font-semibold text-primary-600 mb-6">
+        Datos de la empresa
+      </h2>
+      <p class="text-accent-700 leading-relaxed text-lg">
+        {config.companyName}<br />
+        CIF: B00000000<br />
+        {config.address}<br />
+        Tel: {config.phone}<br />
+        Email: {config.email}
+      </p>
+    </section>
+
+    <!-- MAPA FINAL ANCHO COMPLETO -->
+    <section class="container mx-auto px-6 contact-fade fade-in">
+      <div class="rounded-2xl overflow-hidden shadow-gym-lg h-[420px]">
+        <iframe
+          src="https://www.google.com/maps?q=Madrid&output=embed"
+          class="w-full h-full"
+          loading="lazy"
+          allowfullscreen></iframe>
+      </div>
+    </section>
+
+    <PreguntasSection preguntas={faqs.contacto} />
+
+    <!-- IMPORTAR SCRIPT -->
+    <script type="module" src={contactScript}></script>
+    <script type="module" src={preguntasScript}></script>
+  </main>
+</Layout>

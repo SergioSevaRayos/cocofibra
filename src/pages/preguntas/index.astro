@@ -1,0 +1,44 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import faqs from "../../data/faqs.json";
+import PreguntasList from "../../components/sections/preguntas/PreguntasList.astro";
+import buscadorScript from "../../scripts/buscador-faq.js?url";
+
+
+/* combinar todas las preguntas */
+const allFaqs = [
+    ...(faqs.home ?? []),
+    ...(faqs.tarifas ?? []),
+    ...(faqs.localidades ?? []),
+    ...(faqs.localidad ?? []),
+    ...(faqs.contacto ?? []),
+    ...(faqs.preguntas ?? []),
+    ...(faqs.tarifa?.fibra ?? []),
+    ...(faqs.tarifa?.movil ?? []),
+    ...(faqs.tarifa?.["fibra-movil"] ?? []),
+];
+---
+
+<Layout
+    title="Preguntas frecuentes"
+    description="Todas las preguntas sobre tarifas, cobertura y servicios."
+>
+    <main class="pt-28 pb-24 container mx-auto px-6 max-w-4xl">
+        <h1
+            class="text-4xl font-heading font-bold text-primary-600 mb-8 text-center"
+        >
+            Preguntas frecuentes
+        </h1>
+
+        <input
+            id="faq-search"
+            type="text"
+            placeholder="Busca una pregunta…"
+            class="w-full px-5 py-3 border border-gray-300 rounded-xl shadow-sm mb-10"
+        />
+
+        <PreguntasList preguntas={allFaqs} />
+    </main>
+
+    <script type="module" src={buscadorScript}></script>
+</Layout>

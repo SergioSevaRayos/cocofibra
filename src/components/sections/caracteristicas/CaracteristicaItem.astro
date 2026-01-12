@@ -1,0 +1,27 @@
+---
+export interface Props {
+    icon: string;
+    title: string;
+    text: string;
+}
+
+const { icon, title, text } = Astro.props;
+---
+
+<div class="feature-item will-change-transform flex items-start gap-4">
+    <img
+        src={icon}
+        alt={title}
+        width="48"
+        height="48"
+        loading="lazy"
+        class="w-12 h-12 object-contain"
+    />
+
+    <div>
+        <h3 class="font-semibold text-lg text-gray-900">{title}</h3>
+        <p class="text-gray-600 text-sm mt-1">{text}</p>
+    </div>
+</div>
+
+

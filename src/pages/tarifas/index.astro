@@ -1,0 +1,225 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import config from "../../data/site-config.json";
+import { generateSchema } from "../../lib/schemaGenerator.js";
+import tarifas from "../../data/tarifas.json";
+import tarifasScript from "/src/scripts/tarifas.js?url";
+import tarifasUrlScript from "/src/scripts/tarifasUrl.js?url";
+
+import TarifasSection from "../../components/sections/tarifas/TarifasSection.astro";
+import CTASection from "../../components/sections/CTASection.astro";
+import PreguntasSection from "../../components/sections/preguntas/PreguntasSection.astro";
+import faqs from "../../data/faqs.json";
+import preguntasScript from "../../scripts/preguntas.js?url";
+
+/* ===========================
+   FAQs para TARIFAS (URL /tarifas)
+=========================== */
+const faqsTarifa = faqs.tarifas ?? [];
+
+/* ===========================
+   SCHEMA principal
+=========================== */
+const schema = generateSchema(
+    {
+        type: "ItemList",
+        data: {
+            name: "Tarifas de fibra y móvil",
+            description: "Comparativa...",
+            items: tarifas.map((t) => ({
+                name: t.title,
+                url: `/tarifas/${t.slug}`,
+            })),
+        },
+    },
+    config,
+    Astro.url,
+);
+---
+
+<Layout
+    title={`Tarifas | ${config.companyName}`}
+    description="Tarifas de fibra y móvil con instalación rápida, precios claros y atención local. Elige la que mejor se adapte a ti."
+    schema={schema}
+>
+    <main class="pt-28 pb-24">
+        <!-- HERO -->
+        <!-- HERO TARIFAS -->
+<section class="container mx-auto px-6 mb-20">
+  <div class="grid md:grid-cols-2 items-center gap-10">
+
+    <!-- COLUMNA IZQUIERDA: TEXTOS -->
+    <div class="text-center md:text-left">
+      <h1 class="text-4xl md:text-5xl font-heading font-bold text-primary-600">
+        Tarifas de Fibra y Móvil sin Sorpresas
+      </h1>
+
+      <p class="mt-4 text-accent-600 text-lg max-w-xl mx-auto md:mx-0">
+        Precios claros. Instalación rápida. Router WiFi 6 de alta velocidad
+        incluido. Atención cercana y sin complicaciones.
+      </p>
+    </div>
+
+    <!-- COLUMNA DERECHA: MASCOTA -->
+    <div class="flex justify-center md:justify-end">
+      <img 
+        src="/images/mascota-tarifas.webp"
+        alt="Mascota CocoFibra asesorando sobre tarifas"
+        class="w-[220px] md:w-[320px] drop-shadow-md"
+        loading="lazy"
+      />
+    </div>
+
+  </div>
+</section>
+
+
+
+        <!-- SELECTOR DE CATEGORÍAS (RESPONSIVE + TOUCH SAFE) -->
+        <section class="container mx-auto px-6 mb-10">
+            <div
+                class="grid grid-cols-2 md:grid-cols-4 gap-2 bg-secondary-100 p-1 rounded-xl shadow-gym-card touch-manipulation"
+                role="tablist"
+            >
+                <button
+                    data-filter="all"
+                    aria-selected="true"
+                    class="filter-btn py-2 text-sm font-medium rounded-lg bg-primary-500 text-white shadow-gym-card transition"
+                >
+                    Todo
+                </button>
+
+                <button
+                    data-filter="fibra-movil"
+                    aria-selected="false"
+                    class="filter-btn py-2 text-sm font-medium rounded-lg bg-secondary-100 text-accent-700 transition md:hover:bg-secondary-200"
+                >
+                    Fibra + Móvil
+                </button>
+
+                <button
+                    data-filter="fibra"
+                    aria-selected="false"
+                    class="filter-btn py-2 text-sm font-medium rounded-lg bg-secondary-100 text-accent-700 transition md:hover:bg-secondary-200"
+                >
+                    Fibra
+                </button>
+
+                <button
+                    data-filter="movil"
+                    aria-selected="false"
+                    class="filter-btn py-2 text-sm font-medium rounded-lg bg-secondary-100 text-accent-700 transition md:hover:bg-secondary-200"
+                >
+                    Móvil
+                </button>
+            </div>
+        </section>
+        
+
+        <!-- TARIFAS -->
+        <section class="container mx-auto px-6">
+            <TarifasSection tarifas={tarifas} />
+        </section>
+
+        <!-- GARANTÍAS (INDUSTRIA TELECOM) -->
+        <section class="container mx-auto px-6 mt-24">
+            <h2
+                class="text-2xl font-heading font-semibold text-primary-600 text-center mb-10"
+            >
+                ¿Por qué elegir CocoFibra?
+            </h2>
+
+            <div
+                class="grid md:grid-cols-4 gap-8 max-w-6xl mx-auto text-center"
+            >
+                <div class="p-6 bg-secondary-50 shadow-gym-card rounded-2xl">
+                    <img
+                        src="/icons/velocidad.webp"
+                        class="w-12 mx-auto mb-4"
+                        alt="Velocidad"
+                    />
+                    <h3 class="font-semibold text-accent-700 mb-2">
+                        Velocidad Real
+                    </h3>
+                    <p class="text-gray-700 text-sm">
+                        Fibra garantizada y estable en toda la vivienda.
+                    </p>
+                </div>
+
+                <div class="p-6 bg-secondary-50 shadow-gym-card rounded-2xl">
+                    <img
+                        src="/icons/router-de-wifi.webp"
+                        class="w-12 mx-auto mb-4"
+                        alt="Router WiFi 6"
+                    />
+                    <h3 class="font-semibold text-accent-700 mb-2">
+                        Router WiFi 6 incluido
+                    </h3>
+                    <p class="text-gray-700 text-sm">
+                        Última generación para mejorar cobertura y latencia.
+                    </p>
+                </div>
+
+                <div class="p-6 bg-secondary-50 shadow-gym-card rounded-2xl">
+                    <img
+                        src="/icons/atencion-al-cliente.webp"
+                        class="w-12 mx-auto mb-4"
+                        alt="Atención local"
+                    />
+                    <h3 class="font-semibold text-accent-700 mb-2">
+                        Atención Local
+                    </h3>
+                    <p class="text-gray-700 text-sm">
+                        Hablas con personas, no con robots.
+                    </p>
+                </div>
+
+                <div class="p-6 bg-secondary-50 shadow-gym-card rounded-2xl">
+                    <img
+                        src="/icons/apoyo.webp"
+                        class="w-12 mx-auto mb-4"
+                        alt="Instalación rápida"
+                    />
+                    <h3 class="font-semibold text-accent-700 mb-2">
+                        Instalación en 48h
+                    </h3>
+                    <p class="text-gray-700 text-sm">
+                        Técnicos expertos listos para conectarte rápido.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- COMPROBAR COBERTURA -->
+        <section class="container mx-auto px-6 mt-24 text-center">
+            <h2
+                class="text-2xl font-heading font-semibold text-primary-600 mb-6"
+            >
+                Comprueba si tienes cobertura en tu zona
+            </h2>
+
+            <a
+                href="/cobertura/"
+                class="inline-block bg-primary-500 text-white px-8 py-4 rounded-xl text-lg font-semibold hover:bg-primary-600 shadow-gym-card transition"
+            >
+                Consultar cobertura
+            </a>
+        </section>
+
+        <!-- PREGUNTAS FRECUENTES SOBRE TARIFAS -->
+        <section class="container mx-auto px-6 mt-24">
+            <PreguntasSection preguntas={faqs.tarifas} />
+        </section>
+
+        <!-- CTA FINAL -->
+        <section class="mt-20">
+            <CTASection />
+        </section>
+
+        <!-- SCRIPT DE FILTROS -->
+    </main>
+
+    <script type="module" src={tarifasUrlScript}></script>
+    <script type="module" src={tarifasScript}></script>
+    <script type="module" src={preguntasScript}></script>
+</Layout>

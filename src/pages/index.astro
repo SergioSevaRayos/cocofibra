@@ -1,0 +1,72 @@
+---
+import Layout from "../layouts/Layout.astro";
+import config from "../data/site-config.json";
+import { generateSchema } from "../lib/schemaGenerator.js";
+import heroScript from "/src/scripts/hero.js?url";
+
+import localidadesScript from "/src/scripts/localidades.js?url";
+import preguntasScript from "/src/scripts/preguntas.js?url";
+import caracteristicasScript from "/src/scripts/caracteristicas.js?url";
+caracteristicasScript
+
+/* Datos */
+import tarifas from "../data/tarifas.json"; // ← CORREGIDO: ahora JSON
+import localidadesData from "../data/localidades.json";
+
+const localidades = localidadesData
+    .map((loc) => ({
+        name: loc.name,
+        url: `/cobertura/${loc.slug}`, // ← generamos URL
+        subtitle: loc.provincia || "",
+    }))
+    .toSorted((a, b) => a.name.localeCompare(b.name));
+
+/* Componentes */
+import Hero from "../components/hero/Hero.astro";
+import Caracteristicas from "../components/sections/caracteristicas/Caracteristicas.astro";
+import TarifasSection from "../components/sections/tarifas/TarifasSection.astro";
+import LocalidadesSection from "../components/sections/localidades/LocalidadesSection.astro";
+import PreguntasSection from "../components/sections/preguntas/PreguntasSection.astro";
+import CTASection from "../components/sections/CTASection.astro";
+import faqs from "../data/faqs.json";
+
+/* Schema SEO */
+const schema = generateSchema(
+    {
+        type: "ItemList",
+        data: {
+            name: "Tarifas de fibra y móvil",
+            description: "Comparativa...",
+            items: tarifas.map((t) => ({
+                name: t.title,
+                url: `/tarifas/${t.slug}`,
+            })),
+        },
+    },
+    config,
+    Astro.url,
+);
+---
+
+<Layout
+    title={`Inicio | ${config.companyName}`}
+    description="Fibra, móvil y tarifas sin sorpresas. Cobertura real en tu zona con CocoFibra."
+    schema={schema}
+>
+    <Hero />
+
+    <Caracteristicas />
+
+    <!-- Aquí usamos el modo SIMPLE para que el index muestre solo las cards -->
+    <TarifasSection tarifas={tarifas} simple />
+
+    <LocalidadesSection localidades={localidades} />
+
+    <PreguntasSection preguntas={faqs.home} />
+
+    <CTASection />
+    <script type="module" src={heroScript}></script>
+    <script type="module" src={caracteristicasScript}></script>
+    <script type="module" src={localidadesScript}></script>
+    <script type="module" src={preguntasScript}></script>
+</Layout>

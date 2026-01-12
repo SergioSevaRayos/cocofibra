@@ -1,0 +1,21 @@
+{
+  "name": "",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/sitemap": "^3.6.0",
+    "@astrojs/tailwind": "^6.0.2",
+    "aos": "^2.3.4",
+    "astro": "^5.14.1",
+    "motion": "^12.23.25"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.4.0"
+  }
+}

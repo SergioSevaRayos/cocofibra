@@ -1,0 +1,198 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import config from "../../data/site-config.json";
+import { generateSchema } from "../../lib/schemaGenerator.js";
+import tarifas from "../../data/tarifas.json";
+import localidadesScript from "../../scripts/localidades.js?url";
+import preguntasScript from "../../scripts/preguntas.js?url";
+/* Componentes existentes */
+import TarifasSection from "../../components/sections/tarifas/TarifasSection.astro";
+import LocalidadesSection from "../../components/sections/localidades/LocalidadesSection.astro";
+import PreguntasSection from "../../components/sections/preguntas/PreguntasSection.astro";
+import CTASection from "../../components/sections/CTASection.astro";
+
+import localidadesData from "../../data/localidades.json";
+import faqs from "../../data/faqs.json";
+
+const localidades = localidadesData
+    .map((loc) => ({
+        name: loc.name,
+        url: `/cobertura/${loc.slug}`, // ← generamos URL
+        subtitle: loc.provincia || "",
+    }))
+    .toSorted((a, b) => a.name.localeCompare(b.name));
+
+const schema = generateSchema(
+    {
+        type: "WebPage",
+        data: {
+            name: "Cobertura de fibra y móvil",
+            description:
+                "Comprueba la cobertura de fibra y móvil en tu municipio con CocoFibra.",
+        },
+    },
+    config,
+    Astro.url,
+);
+---
+
+<Layout
+    title={"Cobertura | " + config.companyName}
+    description="Comprueba la disponibilidad de fibra y móvil en tu zona. Localidades, ventajas técnicas y tarifas disponibles."
+    schema={schema}
+>
+    <main class="pt-28 pb-24">
+        <!-- HERO (claro, conversión suave) -->
+        <section class="container mx-auto px-6 text-center mb-16">
+            <h1
+                class="text-4xl md:text-5xl font-heading font-bold text-primary-600"
+            >
+                Cobertura de fibra y móvil en tu zona
+            </h1>
+            <p class="mt-4 text-accent-600 text-lg max-w-3xl mx-auto">
+                Comprueba si instalamos en tu municipio y descubre las tarifas y
+                tiempos de instalación habituales.
+            </p>
+
+            <div class="mt-8 flex justify-center gap-4">
+                <a
+                    href="/tarifas"
+                    class="inline-block bg-primary-500 text-white px-6 py-3 rounded-xl font-semibold shadow-gym-card hover:bg-primary-600 transition"
+                >
+                    Ver tarifas
+                </a>
+                <a
+                    href="/contacto"
+                    class="inline-block bg-secondary-100 text-accent-700 px-6 py-3 rounded-xl font-medium hover:bg-secondary-200 transition"
+                >
+                    Consultar cobertura
+                </a>
+            </div>
+        </section>
+
+        <!-- LOCALIDADES (reutiliza componente probado) -->
+        <section class="container mx-auto px-6 mb-20">
+            <h2
+                class="text-2xl font-heading font-semibold text-primary-600 text-center mb-8"
+            >
+                Localidades con cobertura
+            </h2>
+
+            <LocalidadesSection localidades={localidades} />
+        </section>
+
+        <!-- BENEFICIOS TÉCNICOS (conciso y orientado a conversiones) -->
+        <section class="container mx-auto px-6 mb-20">
+            <h2
+                class="text-2xl font-heading font-semibold text-primary-600 text-center mb-8"
+            >
+                ¿Qué ofrece nuestra cobertura?
+            </h2>
+
+            <div
+                class="grid sm:grid-cols-2 md:grid-cols-4 gap-6 max-w-6xl mx-auto text-center"
+            >
+                <div class="p-6 bg-secondary-50 rounded-2xl shadow-gym-card">
+                    <img
+                        src="/icons/fibra.webp"
+                        alt="Fibra real"
+                        class="w-12 mx-auto mb-4"
+                    />
+                    <h3 class="font-semibold text-accent-700 mb-2">
+                        Fibra real y simétrica
+                    </h3>
+                    <p class="text-gray-700 text-sm">
+                        Velocidades estables para streaming, gaming y
+                        teletrabajo.
+                    </p>
+                </div>
+
+                <div class="p-6 bg-secondary-50 rounded-2xl shadow-gym-card">
+                    <img
+                        src="/icons/router-de-wifi.webp"
+                        alt="Router WiFi 6"
+                        class="w-12 mx-auto mb-4"
+                    />
+                    <h3 class="font-semibold text-accent-700 mb-2">
+                        Router WiFi 6
+                    </h3>
+                    <p class="text-gray-700 text-sm">
+                        Equipo de última generación incluido en muchas tarifas.
+                    </p>
+                </div>
+
+                <div class="p-6 bg-secondary-50 rounded-2xl shadow-gym-card">
+                    <img
+                        src="/icons/apoyo.webp"
+                        alt="Instalación rápida"
+                        class="w-12 mx-auto mb-4"
+                    />
+                    <h3 class="font-semibold text-accent-700 mb-2">
+                        Instalación rápida
+                    </h3>
+                    <p class="text-gray-700 text-sm">
+                        Cita y puesta en marcha en 24–48 horas en la mayoría de
+                        casos.
+                    </p>
+                </div>
+
+                <div class="p-6 bg-secondary-50 rounded-2xl shadow-gym-card">
+                    <img
+                        src="/icons/atencion-al-cliente.webp"
+                        alt="Atención local"
+                        class="w-12 mx-auto mb-4"
+                    />
+                    <h3 class="font-semibold text-accent-700 mb-2">
+                        Atención local
+                    </h3>
+                    <p class="text-gray-700 text-sm">
+                        Soporte cercano y resolución rápida de incidencias.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- TARIFAS (resumen y enlace a sección completa) -->
+        <section class="container mx-auto px-6 mb-20">
+            <h2
+                class="text-2xl font-heading font-semibold text-primary-600 text-center mb-8"
+            >
+                Tarifas disponibles en zonas con cobertura
+            </h2>
+
+            <div class="max-w-6xl mx-auto">
+                <TarifasSection tarifas={tarifas} simple />
+            </div>
+        </section>
+
+        <!-- BLOQUE SEO: textos orientados a long-tail (conciso, accesible) -->
+        <section class="container mx-auto px-6 mb-20 max-w-4xl">
+            <h3 class="text-lg font-semibold text-accent-700 mb-3">
+                Cobertura por municipio
+            </h3>
+            <p class="text-gray-700 text-sm leading-relaxed">
+                Consultamos periódicamente la disponibilidad de fibra en cada
+                municipio. Si no ves tu localidad todavía, contacta con nosotros
+                y te daremos información sobre despliegues próximos y opciones
+                alternativas de conexión.
+            </p>
+        </section>
+
+        <!-- FAQ (reutiliza componente) -->
+        <section class="container mx-auto px-6 mb-20">
+            <h2
+                class="text-2xl font-heading font-semibold text-primary-600 text-center mb-8"
+            >
+                Preguntas frecuentes sobre la cobertura
+            </h2>
+            <PreguntasSection preguntas={faqs.localidades} />
+        </section>
+
+        <!-- CTA final -->
+        <section class="mt-20">
+            <CTASection />
+        </section>
+    </main>
+    <script type="module" src={localidadesScript}></script>
+    <script type="module" src={preguntasScript}></script>
+</Layout>

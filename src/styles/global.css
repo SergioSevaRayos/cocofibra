@@ -1,0 +1,474 @@
+/* ==============================
+      IMPORT TAILWIND (ÚNICO)
+================================= */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ==============================
+        REGLAS GLOBALES
+================================= */
+
+html,
+body {
+    scroll-behavior: smooth;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+/* ==============================
+        HERO — GLOBAL MINIMO
+(la lógica visual está dentro del componente)
+================================= */
+
+.hero-section {
+    padding-top: 6rem;
+}
+
+.hero-main {
+    opacity: 0;
+    will-change: opacity;
+    transition: opacity 0.25s ease-out;
+}
+
+.hero-card:hover {
+    background: #009640;
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.18);
+}
+
+.hero-card:hover h3,
+.hero-card:hover li,
+.hero-card:hover p,
+.hero-card:hover span {
+    color: white !important;
+}
+
+.hero-card:hover .bullet {
+    background: white !important;
+}
+
+.hero-card:hover .badge {
+    background: white !important;
+    color: #006b2f !important;
+}
+
+.hero-card:hover .precio-num,
+.hero-card:hover .precio-mes {
+    color: white !important;
+}
+
+.hero-card .cta-card {
+    background: #009640 !important;
+    transition: background-color .25s ease, transform .2s ease;
+}
+
+.hero-card:hover .cta-card {
+    background: #ff6b35 !important;
+}
+
+.hero-card:hover .cta-card:active {
+    background: #cc522a !important;
+    transform: scale(.96);
+}
+
+
+/* CTA del hero (efecto premium, solo global si lo usas en más sitios) */
+.cta-hero {
+    position: relative;
+    overflow: hidden;
+    transition:
+        background-color 0.25s ease,
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+.cta-hero:hover {
+    transform: scale(1.05);
+    box-shadow: 0 12px 30px rgba(255, 107, 53, 0.35);
+}
+
+.cta-hero:active {
+    transform: scale(0.96);
+    box-shadow: 0 6px 18px rgba(255, 107, 53, 0.25);
+}
+
+.cta-hero::after {
+    content: "";
+    position: absolute;
+    top: -150%;
+    left: -50%;
+    width: 200%;
+    height: 300%;
+    background: linear-gradient(135deg,
+            rgba(255, 255, 255, 0.10) 0%,
+            rgba(255, 255, 255, 0.30) 50%,
+            rgba(255, 255, 255, 0.10) 100%);
+    transform: rotate(12deg);
+    transition: opacity 0.35s ease;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.cta-hero:hover::after {
+    opacity: 1;
+}
+
+/* ==============================
+              NAV
+================================= */
+
+#menu-btn {
+    transition: transform 0.2s ease;
+}
+
+#menu-btn:active {
+    transform: scale(0.9);
+}
+
+#mobile-menu {
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+/* ==============================
+        RESPONSIVE Y ACCESIBILIDAD
+================================= */
+
+@media (max-width: 480px) {
+    .hero-section {
+        padding-top: 6rem !important;
+        min-height: 520px;
+    }
+
+    h1 {
+        font-size: 1.9rem !important;
+        line-height: 1.25 !important;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .hero-main {
+        opacity: 1 !important;
+        transition: none !important;
+    }
+
+    .cta-hero,
+    .cta-hero:hover,
+    .cta-hero:active {
+        transform: none !important;
+        box-shadow: none !important;
+    }
+
+    .cta-hero::after {
+        display: none !important;
+    }
+}
+
+/* ==============================
+      ORIENTACIÓN PARA NAV
+================================= */
+
+/* Portrait → solo nav móvil */
+@media (orientation: portrait) {
+    .nav-desktop {
+        display: none !important;
+    }
+
+    .nav-mobile {
+        display: block !important;
+        visibility: visible !important;
+        pointer-events: auto !important;
+    }
+}
+
+/* Landscape → solo nav desktop */
+@media (orientation: landscape) {
+    .nav-desktop {
+        display: flex !important;
+    }
+
+    .nav-mobile {
+        display: none !important;
+        visibility: hidden !important;
+        pointer-events: none !important;
+    }
+}
+
+/* ============================= */
+/*    FAQ — FLIP CARD PREMIUM    */
+/* ============================= */
+
+.faq-item {
+    perspective: 1200px;
+    border-radius: 1rem;
+    margin-bottom: 1rem;
+    opacity: 0;
+    transform: translateY(12px);
+    transition: opacity .35s ease, transform .35s ease;
+}
+
+.faq-item.entered {
+    opacity: 1;
+    transform: none;
+}
+
+.faq-card {
+    position: relative;
+    width: 100%;
+    background: #fff;
+    border-radius: 1rem;
+    border: 1px solid #e5e7eb;
+    transform-style: preserve-3d;
+    transition: transform .6s cubic-bezier(.17,.55,.55,1);
+    min-height: 110px;
+}
+
+.faq-item.active .faq-card {
+    transform: rotateX(180deg);
+}
+
+/* FRONT */
+.faq-front {
+    position: absolute;
+    inset: 0;
+    padding: 1.2rem 1.4rem;
+    border-radius: inherit;
+    background: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    backface-visibility: hidden;
+}
+
+/* BACK */
+.faq-back {
+    position: absolute;
+    inset: 0;
+    padding: 1.6rem 1.4rem;
+    background: #fff;
+    border-radius: inherit;
+    backface-visibility: hidden;
+    transform: rotateX(180deg);
+    display: flex;
+    align-items: center;
+}
+
+.faq-answer {
+    font-size: 1rem;
+    line-height: 1.55;
+    color: #374151;
+}
+
+/* ICON */
+.faq-icon {
+    width: 24px;
+    height: 24px;
+    color: #009640;
+    transition: transform .25s ease, color .25s ease;
+}
+
+.faq-item.active .faq-icon {
+    transform: rotate(90deg);
+    color: #ff6b35;
+}
+
+
+/* ========================= */
+/* CTA SECTION — FONDO SÓLIDO */
+/* ========================= */
+
+.cta-section-solid {
+    background: #009640;
+    /* Verde corporativo */
+}
+
+
+
+/* ========================= */
+/* CTA – VARIANTE POTENTE */
+/* Doble pulso + halo expansivo */
+/* ========================= */
+
+/* --- Animación doble pulso (boom–boom) --- */
+@keyframes ctaDoublePulse {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 0 0 rgba(255, 107, 53, 0);
+    }
+
+    20% {
+        transform: scale(1.22);
+        box-shadow: 0 0 38px rgba(255, 107, 53, 0.75);
+    }
+
+    35% {
+        transform: scale(1);
+        box-shadow: 0 0 0 rgba(255, 107, 53, 0);
+    }
+
+    55% {
+        transform: scale(1.18);
+        box-shadow: 0 0 32px rgba(255, 107, 53, 0.6);
+    }
+
+    75% {
+        transform: scale(1);
+        box-shadow: 0 0 0 rgba(255, 107, 53, 0);
+    }
+
+    100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 rgba(255, 107, 53, 0);
+    }
+}
+
+/* --- Halo expansivo alrededor del CTA --- */
+@keyframes ctaHaloWave {
+    0% {
+        transform: scale(1);
+        opacity: 0.55;
+    }
+
+    80% {
+        transform: scale(2.2);
+        opacity: 0;
+    }
+
+    100% {
+        transform: scale(2.4);
+        opacity: 0;
+    }
+}
+
+/* --- Contenedor del efecto --- */
+.cta-power-wrapper {
+    position: relative;
+    display: inline-block;
+}
+
+/* --- Halo animado --- */
+.cta-halo {
+    position: absolute;
+    inset: 0;
+    border-radius: 1rem;
+    background: radial-gradient(circle,
+            rgba(255, 107, 53, 0.45) 0%,
+            rgba(255, 107, 53, 0) 70%);
+    animation: ctaHaloWave 2.6s ease-out infinite;
+    pointer-events: none;
+}
+
+/* --- CTA principal con doble pulso --- */
+.cta-power {
+    animation: ctaDoublePulse 2.6s ease-in-out infinite;
+    position: relative;
+    z-index: 10;
+    transition: transform 0.2s ease;
+}
+
+/* Click */
+.cta-power:active {
+    transform: scale(0.92);
+}
+
+
+
+/* ========================= */
+/* RESPONSIVE OPTIMIZATION */
+/* ========================= */
+
+@media (max-width: 768px) {
+    .cta-power {
+        animation-duration: 3s;
+    }
+
+    .cta-halo {
+        animation-duration: 3s;
+        opacity: 0.4;
+    }
+}
+
+@media (max-width: 420px) {
+    .cta-halo {
+        opacity: 0.35;
+        filter: blur(14px);
+    }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+
+    .cta-power,
+    .cta-halo {
+        animation: none !important;
+        transform: none !important;
+        box-shadow: none !important;
+    }
+}
+
+/* --- Contact Page Animations --- */
+.fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity .6s ease, transform .6s ease;
+    will-change: opacity, transform;
+}
+
+.fade-in-active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.pulse {
+    transform: scale(1.03);
+    transition: transform .2s ease-out;
+}
+
+.touch-manipulation {
+    touch-action: manipulation;
+}
+
+/* Estado inicial */
+.feature-item {
+    opacity: 0;
+    transform: translateX(0);
+    transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.17, 0.55, 0.55, 1);
+}
+
+/* Animación común */
+.feature-animate {
+    opacity: 1;
+}
+
+/* Animación desde izquierda */
+.from-left {
+    transform: translateX(-60px);
+}
+.feature-animate.from-left {
+    transform: translateX(0);
+}
+
+/* Animación desde derecha */
+.from-right {
+    transform: translateX(60px);
+}
+.feature-animate.from-right {
+    transform: translateX(0);
+}
+
+.faq-item-pro {
+    transition: all .25s ease;
+}
+
+.faq-item-pro.open .faq-answer-pro {
+    display: block;
+}
+
+.faq-item-pro.open .faq-icon-pro {
+    transform: rotate(45deg);
+}

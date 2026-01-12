@@ -1,0 +1,52 @@
+[
+    {
+        "title": "CocoBulosa 600",
+        "slug": "cocobulosa-600",
+        "description": "600 Mb simétricos + 35 GB móvil.",
+        "price": "29,90 €",
+        "category": "fibra-movil",
+        "features": [
+            "600 Mb simétricos",
+            "35 GB móvil + ilimitadas",
+            "Router WiFi 6 incluido",
+            "Instalación en menos de 48h"
+        ]
+    },
+    {
+        "title": "CocoBulosa 1 Gb",
+        "slug": "cocobulosa-1gb",
+        "description": "1 Gbps + 50 GB móvil.",
+        "price": "39,90 €",
+        "category": "fibra",
+        "features": [
+            "1 Gbps simétrico",
+            "50 GB móvil + ilimitadas",
+            "Atención local",
+            "Sin permanencia"
+        ]
+    },
+    {
+        "title": "Fantabulosa 600",
+        "slug": "fantabulosa-600",
+        "description": "600 Mb + 80 GB móvil.",
+        "price": "34,90 €",
+        "category": "fibra-movil",
+        "features": [
+            "600 Mb simétricos",
+            "80 GB móvil + ilimitadas",
+            "Router WiFi 6 premium"
+        ]
+    },
+    {
+        "title": "CocoMóvil 20GB",
+        "slug": "cocomovil-20gb",
+        "description": "20GB + llamadas ilimitadas.",
+        "price": "9,90 €",
+        "category": "movil",
+        "features": [
+            "20GB",
+            "Llamadas ilimitadas",
+            "Cobertura nacional"
+        ]
+    }
+]
