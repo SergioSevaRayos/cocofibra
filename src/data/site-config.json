@@ -7,7 +7,7 @@
     "businessType": "InternetService",
     "logoUrl": "/images/logo.png",
     "phone": "689 476 015",
-    "email": "fibraplustv@gmail.com",
+    "email": "contacto@cocofibramovil.es",
     "address": {
         "streetAddress": "Calle Mayor 73",
         "postalCode": "30120",
@@ -19,5 +19,5 @@
     "siteLanguage": "es",
     "openingHours": "Mo,Tu,We,Th,Fr,Sa,Su 05:00-23:00",
     "defaultDescription": "Fibra simétrica y móvil con atención local y tarifas sin sorpresas.",
-    "ogImage": "/images/og-default.png"
+    "ogImage": "/images/og-default.webp"
 }
