@@ -4,41 +4,55 @@ export interface Props {
 }
 
 const { preguntas = [] } = Astro.props;
-
 ---
 
-<section class="py-24 px-4 bg-white">
-  <div class="max-w-4xl mx-auto text-center mb-14">
-    <h2 class="text-3xl md:text-5xl font-bold text-gray-900">
-      Preguntas frecuentes
-    </h2>
-    <p class="text-lg text-gray-600 mt-3">
-      Todo lo que necesitas saber antes de contratar.
-    </p>
-  </div>
-
-  <div class="max-w-3xl mx-auto space-y-6">
-
-    {preguntas.map((item, i) => (
-      <div class="faq-item">
-  <div class="faq-card">
-
-    <button class="faq-front" data-faq-button>
-      <span class="faq-question">{item.q}</span>
-      <span class="faq-icon"></span>
-    </button>
-
-    <div class="faq-back">
-      <p class="faq-answer">{item.a}</p>
+{preguntas.length > 0 && (
+  <section class="py-24 px-6 bg-secondary-50">
+    <div class="max-w-4xl mx-auto text-center mb-14">
+      <h2 class="text-3xl md:text-5xl font-heading font-extrabold text-primary-600">
+        Preguntas frecuentes
+      </h2>
+      <p class="text-lg text-accent-600 mt-4 max-w-2xl mx-auto">
+        Todo lo que necesitas saber antes de contratar. Transparencia total, sin letra pequeña.
+      </p>
     </div>
 
-  </div>
-</div>
+    <div class="max-w-3xl mx-auto space-y-4">
+      {preguntas.map((item, i) => {
+        const faqId = `faq-section-${i}`;
+        
+        return (
+          <div class="faq-item group">
+            <div class="bg-white border border-gray-200 rounded-2xl shadow-sm hover:shadow-md transition-shadow overflow-hidden">
+              
+              <button 
+                class="w-full flex items-center justify-between p-6 text-left focus:outline-none focus:ring-2 focus:ring-primary-500" 
+                data-faq-button
+                aria-expanded="false"
+                aria-controls={faqId}
+              >
+                <span class="text-lg font-semibold text-gray-900 pr-4">
+                  {item.q}
+                </span>
+                
+                <span class="faq-icon flex-shrink-0 text-primary-500 transition-transform duration-300">
+                  </span>
+              </button>
 
-    ))}
+              <div 
+                id={faqId}
+                class="faq-respuesta hidden px-6 pb-6 text-gray-600 leading-relaxed"
+                aria-hidden="true"
+              >
+                <p class="border-t border-gray-100 pt-4 mt-2">
+                  {item.a}
+                </p>
+              </div>
 
-  </div>
-</section>
-
-
-
+            </div>
+          </div>
+        );
+      })}
+    </div>
+  </section>
+)}

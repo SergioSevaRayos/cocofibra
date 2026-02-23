@@ -1,0 +1,95 @@
+---
+import Layout from "../layouts/Layout.astro";
+import config from "../data/site-config.json";
+import { generateSchema } from "../lib/schemaGenerator.js";
+
+/* Schema legal */
+const schema = generateSchema(
+    {
+        type: "WebPage",
+        data: {
+            name: "Aviso Legal",
+            description:
+                "Aviso Legal y condiciones de uso de la página web de " +
+                config.companyName,
+        },
+    },
+    config,
+    Astro.url,
+);
+---
+
+<Layout
+    title={`Aviso Legal | ${config.companyName}`}
+    description={`Aviso Legal e información corporativa de ${config.companyName}.`}
+    schema={schema}
+>
+    <main class="pt-28 pb-24">
+        <section class="container mx-auto px-6 text-center mb-16">
+            <h1 class="text-4xl font-heading font-bold text-primary-600">
+                Aviso Legal
+            </h1>
+            <p class="mt-4 text-accent-600 text-lg max-w-3xl mx-auto">
+                Información legal y condiciones de uso del sitio web.
+            </p>
+        </section>
+
+        <section
+            class="container mx-auto px-6 max-w-3xl space-y-10 text-gray-700 leading-relaxed"
+        >
+            <div>
+                <h2 class="text-2xl font-semibold text-accent-800 mb-3">
+                    1. Datos Identificativos
+                </h2>
+                <p class="mb-2">
+                    En cumplimiento con el deber de información recogido en artículo 10 de la Ley 34/2002, de 11 de julio, de Servicios de la Sociedad de la Información y del Comercio Electrónico, a continuación se reflejan los siguientes datos:
+                </p>
+                <ul class="list-none mt-4 space-y-2">
+                    <li><strong>Nombre comercial:</strong> {config.companyName}</li>
+                    <li><strong>Razón social / Titular:</strong> {config.legalName}</li>
+                    <li><strong>NIF/CIF:</strong> {config.nif}</li>
+                    <li><strong>Domicilio fiscal:</strong> {config.address}</li>
+                    <li><strong>Actividad económica:</strong> {config.activity}</li>
+                    <li><strong>Correo electrónico:</strong> <a href={`mailto:${config.email}`} class="text-primary-600 hover:underline">{config.email}</a></li>
+                    <li><strong>Teléfono:</strong> {config.phone}</li>
+                </ul>
+            </div>
+
+            <div>
+                <h2 class="text-2xl font-semibold text-accent-800 mb-3">
+                    2. Usuarios
+                </h2>
+                <p>
+                    El acceso y/o uso de este portal atribuye la condición de USUARIO, que acepta, desde dicho acceso y/o uso, las Condiciones Generales de Uso aquí reflejadas.
+                </p>
+            </div>
+
+            <div>
+                <h2 class="text-2xl font-semibold text-accent-800 mb-3">
+                    3. Uso del Portal
+                </h2>
+                <p>
+                    El usuario asume la responsabilidad del uso del portal. Dicha responsabilidad se extiende al registro que fuese necesario para acceder a determinados servicios o contenidos. El usuario se compromete a hacer un uso adecuado de los contenidos y servicios que <strong>{config.companyName}</strong> ofrece a través de su portal.
+                </p>
+            </div>
+
+            <div>
+                <h2 class="text-2xl font-semibold text-accent-800 mb-3">
+                    4. Propiedad Intelectual e Industrial
+                </h2>
+                <p>
+                    <strong>{config.legalName}</strong> por sí o como cesionario, es titular de todos los derechos de propiedad intelectual e industrial de su página web, así como de los elementos contenidos en la misma (a título enunciativo, imágenes, sonido, audio, vídeo, software o textos; marcas o logotipos, combinaciones de colores, estructura y diseño, etc.). Todos los derechos reservados.
+                </p>
+            </div>
+
+            <div>
+                <h2 class="text-2xl font-semibold text-accent-800 mb-3">
+                    5. Modificaciones
+                </h2>
+                <p>
+                    <strong>{config.companyName}</strong> se reserva el derecho de efectuar sin previo aviso las modificaciones que considere oportunas en su portal, pudiendo cambiar, suprimir o añadir tanto los contenidos y servicios que se presten a través de la misma como la forma en la que éstos aparezcan presentados o localizados.
+                </p>
+            </div>
+        </section>
+    </main>
+</Layout>

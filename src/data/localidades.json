@@ -1,20 +1,270 @@
 [
     {
-        "name": "Madrid",
-        "slug": "madrid",
-        "provincia": "Comunidad de Madrid",
-        "description": "Cobertura de fibra y móvil en Madrid."
+        "name": "Abanilla",
+        "slug": "abanilla",
+        "provincia": "Murcia",
+        "description": "Cobertura de fibra y móvil en Abanilla."
     },
     {
-        "name": "Toledo",
-        "slug": "toledo",
-        "provincia": "Castilla-La Mancha",
-        "description": "Instalación rápida de fibra óptica en Toledo."
+        "name": "Abarán",
+        "slug": "abaran",
+        "provincia": "Murcia",
+        "description": "Instalación rápida de fibra óptica en Abarán."
     },
     {
-        "name": "Bargas",
-        "slug": "bargas",
-        "provincia": "Toledo",
-        "description": "Cobertura de fibra estable en Bargas."
+        "name": "Águilas",
+        "slug": "aguilas",
+        "provincia": "Murcia",
+        "description": "Cobertura de fibra y móvil en Águilas."
+    },
+    {
+        "name": "Albudeite",
+        "slug": "albudeite",
+        "provincia": "Murcia",
+        "description": "Instalación rápida de fibra óptica en Albudeite."
+    },
+    {
+        "name": "Alcantarilla",
+        "slug": "alcantarilla",
+        "provincia": "Murcia",
+        "destacada": true,
+        "description": "Cobertura de fibra y móvil en Alcantarilla."
+    },
+    {
+        "name": "Los Alcázares",
+        "slug": "los-alcazares",
+        "provincia": "Murcia",
+        "description": "Instalación rápida de fibra óptica en Los Alcázares."
+    },
+    {
+        "name": "Aledo",
+        "slug": "aledo",
+        "provincia": "Murcia",
+        "description": "Cobertura de fibra y móvil en Aledo."
+    },
+    {
+        "name": "Alguazas",
+        "slug": "alguazas",
+        "provincia": "Murcia",
+        "description": "Instalación rápida de fibra óptica en Alguazas."
+    },
+    {
+        "name": "Alhama de Murcia",
+        "slug": "alhama-de-murcia",
+        "provincia": "Murcia",
+        "description": "Cobertura de fibra y móvil en Alhama de Murcia."
+    },
+    {
+        "name": "Archena",
+        "slug": "archena",
+        "provincia": "Murcia",
+        "description": "Instalación rápida de fibra óptica en Archena."
+    },
+    {
+        "name": "Beniel",
+        "slug": "beniel",
+        "provincia": "Murcia",
+        "description": "Cobertura de fibra y móvil en Beniel."
+    },
+    {
+        "name": "Blanca",
+        "slug": "blanca",
+        "provincia": "Murcia",
+        "description": "Instalación rápida de fibra óptica en Blanca."
+    },
+    {
+        "name": "Bullas",
+        "slug": "bullas",
+        "provincia": "Murcia",
+        "description": "Cobertura de fibra y móvil en Bullas."
+    },
+    {
+        "name": "Calasparra",
+        "slug": "calasparra",
+        "provincia": "Murcia",
+        "description": "Instalación rápida de fibra óptica en Calasparra."
+    },
+    {
+        "name": "Campos del Río",
+        "slug": "campos-del-rio",
+        "provincia": "Murcia",
+        "description": "Cobertura de fibra y móvil en Campos del Río."
+    },
+    {
+        "name": "Caravaca de la Cruz",
+        "slug": "caravaca-de-la-cruz",
+        "provincia": "Murcia",
+        "description": "Instalación rápida de fibra óptica en Caravaca de la Cruz."
+    },
+    {
+        "name": "Cartagena",
+        "slug": "cartagena",
+        "provincia": "Murcia",
+        "destacada": true,
+        "description": "Cobertura de fibra y móvil en Cartagena."
+    },
+    {
+        "name": "Cehegín",
+        "slug": "cehegin",
+        "provincia": "Murcia",
+        "description": "Instalación rápida de fibra óptica en Cehegín."
+    },
+    {
+        "name": "Ceutí",
+        "slug": "ceuti",
+        "provincia": "Murcia",
+        "description": "Cobertura de fibra y móvil en Ceutí."
+    },
+    {
+        "name": "Cieza",
+        "slug": "cieza",
+        "provincia": "Murcia",
+        "description": "Instalación rápida de fibra óptica en Cieza."
+    },
+    {
+        "name": "Fortuna",
+        "slug": "fortuna",
+        "provincia": "Murcia",
+        "description": "Cobertura de fibra y móvil en Fortuna."
+    },
+    {
+        "name": "Fuente Álamo de Murcia",
+        "slug": "fuente-alamo-de-murcia",
+        "provincia": "Murcia",
+        "description": "Instalación rápida de fibra óptica en Fuente Álamo de Murcia."
+    },
+    {
+        "name": "Jumilla",
+        "slug": "jumilla",
+        "provincia": "Murcia",
+        "description": "Cobertura de fibra y móvil en Jumilla."
+    },
+    {
+        "name": "Librilla",
+        "slug": "librilla",
+        "provincia": "Murcia",
+        "description": "Instalación rápida de fibra óptica en Librilla."
+    },
+    {
+        "name": "Lorca",
+        "slug": "lorca",
+        "provincia": "Murcia",
+        "destacada": true,
+        "description": "Cobertura de fibra y móvil en Lorca."
+    },
+    {
+        "name": "Lorquí",
+        "slug": "lorqui",
+        "provincia": "Murcia",
+        "description": "Instalación rápida de fibra óptica en Lorquí."
+    },
+    {
+        "name": "Mazarrón",
+        "slug": "mazarron",
+        "provincia": "Murcia",
+        "description": "Cobertura de fibra y móvil en Mazarrón."
+    },
+    {
+        "name": "Molina de Segura",
+        "slug": "molina-de-segura",
+        "provincia": "Murcia",
+        "destacada": true,
+        "description": "Instalación rápida de fibra óptica en Molina de Segura."
+    },
+    {
+        "name": "Moratalla",
+        "slug": "moratalla",
+        "provincia": "Murcia",
+        "description": "Cobertura de fibra y móvil en Moratalla."
+    },
+    {
+        "name": "Mula",
+        "slug": "mula",
+        "provincia": "Murcia",
+        "description": "Instalación rápida de fibra óptica en Mula."
+    },
+    {
+        "name": "Ojós",
+        "slug": "ojos",
+        "provincia": "Murcia",
+        "description": "Cobertura de fibra y móvil en Ojós."
+    },
+    {
+        "name": "Pliego",
+        "slug": "pliego",
+        "provincia": "Murcia",
+        "description": "Instalación rápida de fibra óptica en Pliego."
+    },
+    {
+        "name": "Puerto Lumbreras",
+        "slug": "puerto-lumbreras",
+        "provincia": "Murcia",
+        "description": "Cobertura de fibra y móvil en Puerto Lumbreras."
+    },
+    {
+        "name": "Ricote",
+        "slug": "ricote",
+        "provincia": "Murcia",
+        "description": "Instalación rápida de fibra óptica en Ricote."
+    },
+    {
+        "name": "San Javier",
+        "slug": "san-javier",
+        "provincia": "Murcia",
+        "description": "Cobertura de fibra y móvil en San Javier."
+    },
+    {
+        "name": "San Pedro del Pinatar",
+        "slug": "san-pedro-del-pinatar",
+        "provincia": "Murcia",
+        "description": "Instalación rápida de fibra óptica en San Pedro del Pinatar."
+    },
+    {
+        "name": "Santomera",
+        "slug": "santomera",
+        "provincia": "Murcia",
+        "description": "Cobertura de fibra y móvil en Santomera."
+    },
+    {
+        "name": "Torre-Pacheco",
+        "slug": "torre-pacheco",
+        "provincia": "Murcia",
+        "description": "Instalación rápida de fibra óptica en Torre-Pacheco."
+    },
+    {
+        "name": "Las Torres de Cotillas",
+        "slug": "las-torres-de-cotillas",
+        "provincia": "Murcia",
+        "description": "Cobertura de fibra y móvil en Las Torres de Cotillas."
+    },
+    {
+        "name": "Totana",
+        "slug": "totana",
+        "provincia": "Murcia",
+        "description": "Instalación rápida de fibra óptica en Totana."
+    },
+    {
+        "name": "Ulea",
+        "slug": "ulea",
+        "provincia": "Murcia",
+        "description": "Cobertura de fibra y móvil en Ulea."
+    },
+    {
+        "name": "La Unión",
+        "slug": "la-union",
+        "provincia": "Murcia",
+        "description": "Instalación rápida de fibra óptica en La Unión."
+    },
+    {
+        "name": "Villanueva del Río Segura",
+        "slug": "villanueva-del-rio-segura",
+        "provincia": "Murcia",
+        "description": "Cobertura de fibra y móvil en Villanueva del Río Segura."
+    },
+    {
+        "name": "Yecla",
+        "slug": "yecla",
+        "provincia": "Murcia",
+        "description": "Instalación rápida de fibra óptica en Yecla."
     }
 ]

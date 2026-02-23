@@ -1,52 +1,183 @@
 [
     {
-        "title": "CocoBulosa 600",
-        "slug": "cocobulosa-600",
-        "description": "600 Mb simétricos + 35 GB móvil.",
-        "price": "29,90 €",
-        "category": "fibra-movil",
+        "title": "Móvil 15 GB",
+        "slug": "movil-15gb",
+        "description": "15 GB de datos y llamadas ilimitadas.",
+        "price": "6,00 €",
+        "category": "movil",
         "features": [
-            "600 Mb simétricos",
-            "35 GB móvil + ilimitadas",
-            "Router WiFi 6 incluido",
-            "Instalación en menos de 48h"
+            "15 GB de datos",
+            "Llamadas ilimitadas",
+            "Cobertura nacional",
+            "Sin sorpresas"
         ]
     },
     {
-        "title": "CocoBulosa 1 Gb",
-        "slug": "cocobulosa-1gb",
-        "description": "1 Gbps + 50 GB móvil.",
-        "price": "39,90 €",
+        "title": "Móvil 40 GB",
+        "slug": "movil-40gb",
+        "description": "40 GB de datos y llamadas ilimitadas.",
+        "price": "8,00 €",
+        "category": "movil",
+        "destacada": true,
+        "features": [
+            "40 GB de datos",
+            "Llamadas ilimitadas",
+            "Cobertura nacional"
+        ]
+    },
+    {
+        "title": "Móvil 100 GB",
+        "slug": "movil-100gb",
+        "description": "100 GB de datos y llamadas ilimitadas.",
+        "price": "10,00 €",
+        "category": "movil",
+        "destacada": true,
+        "features": [
+            "100 GB de datos",
+            "Llamadas ilimitadas",
+            "Cobertura nacional"
+        ]
+    },
+    {
+        "title": "Móvil 250 GB",
+        "slug": "movil-250gb",
+        "description": "250 GB de datos y llamadas ilimitadas.",
+        "price": "16,00 €",
+        "category": "movil",
+        "features": [
+            "250 GB de datos",
+            "Llamadas ilimitadas",
+            "Cobertura nacional"
+        ]
+    },
+    {
+        "title": "Móvil 400 GB",
+        "slug": "movil-400gb",
+        "description": "400 GB de datos y llamadas ilimitadas.",
+        "price": "24,00 €",
+        "category": "movil",
+        "features": [
+            "400 GB de datos",
+            "Llamadas ilimitadas",
+            "Cobertura nacional"
+        ]
+    },
+    {
+        "title": "Móvil 800 GB",
+        "slug": "movil-800gb",
+        "description": "800 GB de datos y llamadas ilimitadas.",
+        "price": "27,00 €",
+        "category": "movil",
+        "features": [
+            "800 GB de datos",
+            "Llamadas ilimitadas",
+            "Cobertura máxima"
+        ]
+    },
+    {
+        "title": "Fibra 300 Mbps",
+        "slug": "fibra-300mbps",
+        "description": "Conexión de 300 Mbps simétricos para tu hogar.",
+        "price": "25,00 €",
+        "category": "fibra",
+        "features": [
+            "300 Mbps simétricos",
+            "Router incluido",
+            "Atención local",
+            "Sin sorpresas en la factura"
+        ]
+    },
+    {
+        "title": "Fibra 1 Gbps",
+        "slug": "fibra-1gbps",
+        "description": "Máxima velocidad con 1 Gbps simétrico.",
+        "price": "30,00 €",
         "category": "fibra",
         "features": [
             "1 Gbps simétrico",
-            "50 GB móvil + ilimitadas",
-            "Atención local",
-            "Sin permanencia"
+            "Router incluido",
+            "Ideal para streaming y gaming",
+            "Atención local"
         ]
     },
     {
-        "title": "Fantabulosa 600",
-        "slug": "fantabulosa-600",
-        "description": "600 Mb + 80 GB móvil.",
-        "price": "34,90 €",
+        "title": "Fibra 300 Mb + 40 GB",
+        "slug": "fibra-300mb-movil-40gb",
+        "description": "Fibra de 300 Mb y línea móvil con 40 GB.",
+        "price": "33,00 €",
         "category": "fibra-movil",
         "features": [
-            "600 Mb simétricos",
-            "80 GB móvil + ilimitadas",
-            "Router WiFi 6 premium"
+            "Fibra 300 Mbps simétricos",
+            "Móvil con 40 GB de datos",
+            "Llamadas ilimitadas en móvil",
+            "Router incluido"
         ]
     },
     {
-        "title": "CocoMóvil 20GB",
-        "slug": "cocomovil-20gb",
-        "description": "20GB + llamadas ilimitadas.",
-        "price": "9,90 €",
-        "category": "movil",
+        "title": "Fibra 300 Mb + 100 GB",
+        "slug": "fibra-300mb-movil-100gb",
+        "description": "Fibra de 300 Mb y línea móvil con 100 GB.",
+        "price": "35,00 €",
+        "category": "fibra-movil",
         "features": [
-            "20GB",
-            "Llamadas ilimitadas",
-            "Cobertura nacional"
+            "Fibra 300 Mbps simétricos",
+            "Móvil con 100 GB de datos",
+            "Llamadas ilimitadas en móvil",
+            "Router incluido"
+        ]
+    },
+    {
+        "title": "Fibra 300 Mb + 250 GB",
+        "slug": "fibra-300mb-movil-250gb",
+        "description": "Fibra de 300 Mb y línea móvil con 250 GB.",
+        "price": "41,00 €",
+        "category": "fibra-movil",
+        "destacada": true,
+        "features": [
+            "Fibra 300 Mbps simétricos",
+            "Móvil con 250 GB de datos",
+            "Llamadas ilimitadas en móvil",
+            "Router incluido"
+        ]
+    },
+    {
+        "title": "Fibra 1 Gbps + 40 GB",
+        "slug": "fibra-1gb-movil-40gb",
+        "description": "Fibra de 1 Gbps y línea móvil con 40 GB.",
+        "price": "38,00 €",
+        "category": "fibra-movil",
+        "features": [
+            "Fibra 1 Gbps simétrica",
+            "Móvil con 40 GB de datos",
+            "Llamadas ilimitadas en móvil",
+            "Router incluido"
+        ]
+    },
+    {
+        "title": "Fibra 1 Gbps + 100 GB",
+        "slug": "fibra-1gb-movil-100gb",
+        "description": "Fibra de 1 Gbps y línea móvil con 100 GB.",
+        "price": "40,00 €",
+        "category": "fibra-movil",
+        "features": [
+            "Fibra 1 Gbps simétrica",
+            "Móvil con 100 GB de datos",
+            "Llamadas ilimitadas en móvil",
+            "Router incluido"
+        ]
+    },
+    {
+        "title": "Fibra 1 Gbps + 250 GB",
+        "slug": "fibra-1gb-movil-250gb",
+        "description": "Fibra de 1 Gbps y línea móvil con 250 GB.",
+        "price": "46,00 €",
+        "category": "fibra-movil",
+        "destacada": true,
+        "features": [
+            "Fibra 1 Gbps simétrica",
+            "Móvil con 250 GB de datos",
+            "Llamadas ilimitadas en móvil",
+            "Router incluido"
         ]
     }
 ]

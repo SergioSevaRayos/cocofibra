@@ -1,13 +1,23 @@
 {
     "companyName": "CocoFibra",
-    "businessType": "Fibra y Móvil",
+    "legalName": "Daniel Pérez Hervás",
+    "nif": "74362133M",
+    "companyType": "Autónomo",
+    "activity": "Telecomunicaciones por cable",
+    "businessType": "InternetService",
     "logoUrl": "/images/logo.png",
-    "phone": "900 000 000",
-    "email": "hola@cocofibra.com",
-    "address": "C/ Ejemplo, 1, Madrid",
+    "phone": "689 476 015",
+    "email": "fibraplustv@gmail.com",
+    "address": {
+        "streetAddress": "Calle Mayor 73",
+        "postalCode": "30120",
+        "addressLocality": "El Palmar",
+        "addressRegion": "Murcia",
+        "addressCountry": "ES"
+    },
     "social": { "linkedin": "", "instagram": "" },
     "siteLanguage": "es",
-    "openingHours": "Lun-Dom 5:00-23:00",
+    "openingHours": "Mo,Tu,We,Th,Fr,Sa,Su 05:00-23:00",
     "defaultDescription": "Fibra simétrica y móvil con atención local y tarifas sin sorpresas.",
     "ogImage": "/images/og-default.png"
 }

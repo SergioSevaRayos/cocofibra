@@ -1,22 +1,47 @@
 ---
 export interface Props {
-    preguntas: { q: string; a: string }[];
+  preguntas: { q: string; a: string }[];
 }
 
 const { preguntas = [] } = Astro.props;
 ---
 
-<section class="space-y-6" id="faq-container">
-    {preguntas.map((item) => (
-        <div class="faq-item-pro rounded-2xl p-6 shadow-gym-card bg-white border border-gray-200">
-            <button class="faq-question-pro w-full text-left font-semibold text-accent-800 flex justify-between items-center" data-faq-button>
-                <span>{item.q}</span>
-                <span class="faq-icon-pro text-primary-600 text-xl">+</span>
+{preguntas.length > 0 && (
+  <div class="space-y-4">
+    {preguntas.map((item, i) => {
+      const faqId = `faq-${i}`;
+      
+      return (
+        <div class="faq-item group">
+          <div class="bg-white border border-gray-200 rounded-2xl shadow-sm hover:shadow-md transition-shadow overflow-hidden">
+            
+            <button 
+              class="w-full flex items-center justify-between p-6 text-left focus:outline-none focus:ring-2 focus:ring-primary-500" 
+              data-faq-button
+              aria-expanded="false"
+              aria-controls={faqId}
+            >
+              <span class="text-lg font-semibold text-gray-900 pr-4">
+                {item.q}
+              </span>
+              
+              <span class="faq-icon flex-shrink-0 text-primary-500 transition-transform duration-300">
+                </span>
             </button>
 
-            <div class="faq-answer-pro hidden mt-3 text-gray-700 leading-relaxed">
+            <div 
+              id={faqId}
+              class="faq-respuesta hidden px-6 pb-6 text-gray-600 leading-relaxed"
+              aria-hidden="true"
+            >
+              <p class="border-t border-gray-100 pt-4 mt-2">
                 {item.a}
+              </p>
             </div>
+
+          </div>
         </div>
-    ))}
-</section>
+      );
+    })}
+  </div>
+)}

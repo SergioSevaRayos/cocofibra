@@ -26,15 +26,16 @@ export async function getStaticPaths() {
 =========================== */
 const { localidad } = Astro.props;
 
-/* SEO schema dinámico */
-const schema = generateSchema(
+/* ===========================
+   SCHEMA SEO (Service + FAQ)
+=========================== */
+// 1. Esquema de Servicio (InternetService en un área concreta)
+const serviceSchema = generateSchema(
     {
-        type: "WebPage",
+        type: "Service",
         data: {
-            name: `Cobertura en ${localidad.name}`,
-            description:
-                localidad.description ||
-                `Cobertura de fibra y móvil en ${localidad.name}.`,
+            title: "Instalación de Fibra Óptica y Móvil",
+            description: localidad.description || `Cobertura de fibra y móvil en ${localidad.name}.`,
             areaServed: localidad.name,
         },
     },
@@ -42,14 +43,28 @@ const schema = generateSchema(
     Astro.url,
 );
 
-/* Selección automática de tarifas mostradas */
-const tarifasDestacadas = tarifas.slice(0, 3);
+// 2. Esquema de Preguntas Frecuentes
+const faqSchema = generateSchema(
+    {
+        type: "FAQPage",
+        data: { faqs: faqs.localidad || [] } // Aseguramos un fallback vacío por si acaso
+    },
+    config,
+    Astro.url
+);
+
+const schema = [serviceSchema, faqSchema];
+
+/* ===========================
+   TARIFAS DESTACADAS
+=========================== */
+// Usamos el campo "destacada" de tu JSON en lugar de cortar con slice
+const tarifasDestacadas = tarifas.filter(t => t.destacada);
 ---
 
 <Layout
     title={`Cobertura en ${localidad.name} | ${config.companyName}`}
-    description={localidad.description ||
-        `Cobertura de fibra y móvil en ${localidad.name}.`}
+    description={localidad.description || `Cobertura de fibra y móvil en ${localidad.name}.`}
     schema={schema}
 >
     <main class="pt-28 pb-24">

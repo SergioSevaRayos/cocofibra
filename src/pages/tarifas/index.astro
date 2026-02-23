@@ -5,7 +5,8 @@ import { generateSchema } from "../../lib/schemaGenerator.js";
 import tarifas from "../../data/tarifas.json";
 import tarifasScript from "/src/scripts/tarifas.js?url";
 import tarifasUrlScript from "/src/scripts/tarifasUrl.js?url";
-
+import localidadesData from "../../data/localidades.json";
+const localidadesDestacadas = localidadesData.filter(l => l.destacada);
 import TarifasSection from "../../components/sections/tarifas/TarifasSection.astro";
 import CTASection from "../../components/sections/CTASection.astro";
 import PreguntasSection from "../../components/sections/preguntas/PreguntasSection.astro";
@@ -18,14 +19,14 @@ import preguntasScript from "../../scripts/preguntas.js?url";
 const faqsTarifa = faqs.tarifas ?? [];
 
 /* ===========================
-   SCHEMA principal
+   SCHEMA SEO (ItemList + FAQPage)
 =========================== */
-const schema = generateSchema(
+const itemListSchema = generateSchema(
     {
         type: "ItemList",
         data: {
-            name: "Tarifas de fibra y móvil",
-            description: "Comparativa...",
+            name: "Tarifas de fibra y móvil de CocoFibra",
+            description: "Comparativa de tarifas de fibra y móvil sin sorpresas.",
             items: tarifas.map((t) => ({
                 name: t.title,
                 url: `/tarifas/${t.slug}`,
@@ -35,8 +36,18 @@ const schema = generateSchema(
     config,
     Astro.url,
 );
----
 
+const faqSchema = generateSchema(
+    {
+        type: "FAQPage",
+        data: { faqs: faqsTarifa }
+    },
+    config,
+    Astro.url
+);
+
+const schema = [itemListSchema, faqSchema];
+---
 <Layout
     title={`Tarifas | ${config.companyName}`}
     description="Tarifas de fibra y móvil con instalación rápida, precios claros y atención local. Elige la que mejor se adapte a ti."
@@ -190,20 +201,39 @@ const schema = generateSchema(
             </div>
         </section>
 
-        <!-- COMPROBAR COBERTURA -->
-        <section class="container mx-auto px-6 mt-24 text-center">
-            <h2
-                class="text-2xl font-heading font-semibold text-primary-600 mb-6"
-            >
-                Comprueba si tienes cobertura en tu zona
-            </h2>
-
-            <a
-                href="/cobertura/"
-                class="inline-block bg-primary-500 text-white px-8 py-4 rounded-xl text-lg font-semibold hover:bg-primary-600 shadow-gym-card transition"
-            >
-                Consultar cobertura
-            </a>
+        <section class="container mx-auto px-6 mt-32 mb-20">
+            <div class="bg-primary-50 rounded-3xl p-10 md:p-14 border border-primary-100 flex flex-col md:flex-row items-center justify-between gap-10">
+                <div class="md:w-2/3 text-center md:text-left">
+                    <h2 class="text-3xl font-heading font-bold text-gray-900 mb-4">
+                        Disfruta de estas tarifas en más de 40 localidades
+                    </h2>
+                    <p class="text-gray-600 text-lg mb-6">
+                        Nuestra red de fibra óptica real no para de crecer. Ya estamos conectando hogares y empresas en 
+                        <span class="font-semibold text-primary-600">
+                            {localidadesDestacadas.map(l => l.name).join(", ")}
+                        </span> y muchos municipios más.
+                    </p>
+                    <div class="flex flex-wrap gap-3 justify-center md:justify-start">
+                        {localidadesDestacadas.map(loc => (
+                            <a 
+                                href={`/cobertura/${loc.slug}`}
+                                class="bg-white border border-gray-200 text-gray-700 px-4 py-2 rounded-full text-sm font-medium hover:border-primary-500 hover:text-primary-600 transition-colors"
+                            >
+                                {loc.name}
+                            </a>
+                        ))}
+                    </div>
+                </div>
+                
+                <div class="md:w-1/3 flex justify-center md:justify-end w-full">
+                    <a
+                        href="/cobertura"
+                        class="w-full text-center bg-primary-600 text-white px-8 py-4 rounded-xl text-lg font-bold shadow-lg shadow-primary-500/30 hover:bg-primary-700 transition-all"
+                    >
+                        Comprobar mi población
+                    </a>
+                </div>
+            </div>
         </section>
 
         <!-- PREGUNTAS FRECUENTES SOBRE TARIFAS -->

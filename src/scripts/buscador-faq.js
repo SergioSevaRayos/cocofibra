@@ -1,26 +1,24 @@
+// src/scripts/buscador-faq.js
 document.addEventListener("DOMContentLoaded", () => {
     const search = document.getElementById("faq-search");
-    const items = [...document.querySelectorAll(".faq-item-pro")];
+    // 1. Corregimos la clase para que coincida con el HTML actual (.faq-item)
+    const items = [...document.querySelectorAll(".faq-item")];
 
-    // Abrir / cerrar
-    items.forEach((item) => {
-        const btn = item.querySelector("[data-faq-button]");
-        btn.addEventListener("click", () => {
-            item.classList.toggle("open");
-        });
-    });
+    // Si no hay buscador en esta página, detenemos el script para evitar errores
+    if (!search) return;
 
-    // Búsqueda predictiva
+    // 2. Búsqueda predictiva
     search.addEventListener("input", () => {
         const q = search.value.trim().toLowerCase();
 
         items.forEach((item) => {
+            // Buscamos tanto en la pregunta como en la respuesta
             const text = item.innerText.toLowerCase();
 
             if (text.includes(q)) {
-                item.style.display = "";
+                item.style.display = ""; // Muestra el elemento si coincide
             } else {
-                item.style.display = "none";
+                item.style.display = "none"; // Lo oculta si no coincide
             }
         });
     });

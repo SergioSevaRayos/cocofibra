@@ -5,6 +5,7 @@ import { generateSchema } from "../../lib/schemaGenerator.js";
 import tarifas from "../../data/tarifas.json";
 import localidadesScript from "../../scripts/localidades.js?url";
 import preguntasScript from "../../scripts/preguntas.js?url";
+
 /* Componentes existentes */
 import TarifasSection from "../../components/sections/tarifas/TarifasSection.astro";
 import LocalidadesSection from "../../components/sections/localidades/LocalidadesSection.astro";
@@ -14,30 +15,53 @@ import CTASection from "../../components/sections/CTASection.astro";
 import localidadesData from "../../data/localidades.json";
 import faqs from "../../data/faqs.json";
 
+/* ===========================
+   DATOS
+=========================== */
 const localidades = localidadesData
     .map((loc) => ({
         name: loc.name,
-        url: `/cobertura/${loc.slug}`, // ← generamos URL
+        url: `/cobertura/${loc.slug}`,
         subtitle: loc.provincia || "",
     }))
     .toSorted((a, b) => a.name.localeCompare(b.name));
 
-const schema = generateSchema(
+// Filtramos solo las tarifas destacadas para no saturar la página
+const tarifasDestacadas = tarifas.filter((t) => t.destacada);
+
+/* ===========================
+   SCHEMA SEO (ItemList + FAQ)
+=========================== */
+// 1. Esquema de Listado de Localidades
+const itemListSchema = generateSchema(
     {
-        type: "WebPage",
+        type: "ItemList",
         data: {
-            name: "Cobertura de fibra y móvil",
+            name: "Municipios con cobertura de CocoFibra",
             description:
-                "Comprueba la cobertura de fibra y móvil en tu municipio con CocoFibra.",
+                "Comprueba la disponibilidad de fibra y móvil en tu zona con nuestra red de localidades.",
+            items: localidades, // Le pasamos el array ya mapeado con "name" y "url"
         },
     },
     config,
     Astro.url,
 );
+
+// 2. Esquema de Preguntas Frecuentes Generales de Cobertura
+const faqSchema = generateSchema(
+    {
+        type: "FAQPage",
+        data: { faqs: faqs.localidades || [] },
+    },
+    config,
+    Astro.url,
+);
+
+const schema = [itemListSchema, faqSchema];
 ---
 
 <Layout
-    title={"Cobertura | " + config.companyName}
+    title={`Cobertura de Fibra y Móvil | ${config.companyName}`}
     description="Comprueba la disponibilidad de fibra y móvil en tu zona. Localidades, ventajas técnicas y tarifas disponibles."
     schema={schema}
 >
@@ -161,7 +185,16 @@ const schema = generateSchema(
             </h2>
 
             <div class="max-w-6xl mx-auto">
-                <TarifasSection tarifas={tarifas} simple />
+                <TarifasSection tarifas={tarifasDestacadas} simple />
+
+                <div class="text-center mt-8">
+                    <a
+                        href="/tarifas"
+                        class="text-primary-600 underline font-medium hover:text-primary-700"
+                    >
+                        Ver todas nuestras tarifas →
+                    </a>
+                </div>
             </div>
         </section>
 

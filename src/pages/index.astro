@@ -12,14 +12,20 @@ caracteristicasScript
 /* Datos */
 import tarifas from "../data/tarifas.json"; // ← CORREGIDO: ahora JSON
 import localidadesData from "../data/localidades.json";
+const tarifasDestacadas = tarifas.filter(t => t.destacada);
 
 const localidades = localidadesData
     .map((loc) => ({
         name: loc.name,
-        url: `/cobertura/${loc.slug}`, // ← generamos URL
+        url: `/cobertura/${loc.slug}`, 
         subtitle: loc.provincia || "",
+        destacada: loc.destacada === true // <-- ¡AQUÍ ESTÁ LA CLAVE!
     }))
     .toSorted((a, b) => a.name.localeCompare(b.name));
+const localidadesDestacadas = localidades.filter(l => l.destacada);
+
+
+
 
 /* Componentes */
 import Hero from "../components/hero/Hero.astro";
@@ -29,6 +35,7 @@ import LocalidadesSection from "../components/sections/localidades/LocalidadesSe
 import PreguntasSection from "../components/sections/preguntas/PreguntasSection.astro";
 import CTASection from "../components/sections/CTASection.astro";
 import faqs from "../data/faqs.json";
+
 
 /* Schema SEO */
 const schema = generateSchema(
@@ -58,9 +65,19 @@ const schema = generateSchema(
     <Caracteristicas />
 
     <!-- Aquí usamos el modo SIMPLE para que el index muestre solo las cards -->
-    <TarifasSection tarifas={tarifas} simple />
+    <TarifasSection tarifas={tarifasDestacadas} />
+    <div class="text-center mt-10">
+        <a href="/tarifas" class="text-primary-600 font-semibold hover:underline">
+            Ver todas las tarifas &rarr;
+        </a>
+    </div>
 
-    <LocalidadesSection localidades={localidades} />
+    <LocalidadesSection localidades={localidadesDestacadas} />
+    <div class="text-center mt-10">
+        <a href="/cobertura" class="inline-block px-6 py-3 border-2 border-primary-500 text-primary-600 font-semibold rounded-full hover:bg-primary-50 transition-colors">
+            Comprobar todas las localidades
+        </a>
+    </div>
 
     <PreguntasSection preguntas={faqs.home} />
 
